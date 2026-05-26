@@ -9,7 +9,9 @@ Target live date: MAY 22, 2026 (Friday)
 - Platform: Facebook + Instagram
 - Objective: Lead Generation
 - Daily budget: $10–$15/day
-- Audience: Homeowners, AZ service area, ages 28–65
+- Audience: Homeowners, ages 28–65
+- Location: Surprise, AZ + 20 mile radius (covers Sun City West, Peoria, El Mirage, Youngtown, NW Glendale)
+- NOTE: Keep routes dense — no expanding radius to chase leads far out. Gas + drive time = money lost.
 - Placement: Facebook Feed, Instagram Feed, Stories
 
 ## Creative Checklist
