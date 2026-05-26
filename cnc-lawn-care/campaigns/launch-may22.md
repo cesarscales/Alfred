@@ -1,6 +1,10 @@
 # CNC Lawn Care — Launch Campaign
 Target live date: MAY 22, 2026 (Friday)
 
+## Social Pages
+- Instagram: @cnclawncareazz
+- Facebook: CNC Lawncare LLC.
+
 ## Campaign Setup
 - Platform: Facebook + Instagram
 - Objective: Lead Generation
