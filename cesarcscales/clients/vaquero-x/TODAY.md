@@ -36,12 +36,12 @@ Walk out with:
 - [ ] Ad Account ID + Pixel ID
 - [ ] His best contact email + phone
 - [ ] 3–5 before/after photos (text them to yourself)
-- [ ] $250 launch payment collected
+- [ ] $750 launch payment collected (first month)
 
 ---
 
 ## KEY NUMBERS TO REFERENCE
 - Setup deposit already paid: $750
-- Due at launch: $250
+- Due at launch (first month): $750
 - Monthly retainer: $1,150
 - Campaign live target: within 7 days (by June 3)

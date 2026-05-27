@@ -3,7 +3,7 @@ Booked: May 11, 2026
 
 ## Pricing
 - $750 setup deposit
-- $250 at launch
+- $750 at launch (first month)
 - $1,150/month ongoing
 
 ## Onboarding Checklist
