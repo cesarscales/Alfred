@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vaquero X Landscape — Onboarding & Meta Setup</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f0f0f; color: #fff; }
+
+  .slide {
+    min-height: 100vh;
+    padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 2px solid #1a1a1a;
+  }
+
+  .slide-number {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #22c55e;
+    margin-bottom: 16px;
+  }
+
+  h1 { font-size: 52px; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+  h2 { font-size: 38px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+
+  .subtitle { font-size: 19px; color: #888; line-height: 1.6; max-width: 720px; }
+
+  .step-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    margin-top: 32px;
+  }
+
+  .step-card {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 26px;
+  }
+  .step-card .num { font-size: 34px; font-weight: 800; color: #22c55e; line-height: 1; margin-bottom: 10px; }
+  .step-card h4 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+  .step-card p { font-size: 14px; color: #777; line-height: 1.6; }
+
+  .action-list { list-style: none; margin-top: 24px; }
+  .action-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid #1a1a1a;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .action-list li:last-child { border-bottom: none; }
+  .action-list .icon {
+    width: 30px; height: 30px; min-width: 30px;
+    background: #22c55e; color: #000;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 13px;
+  }
+  .action-list .text strong { display: block; color: #fff; margin-bottom: 2px; }
+  .action-list .text span { color: #777; font-size: 13px; }
+
+  .url-box {
+    background: #1a1a1a;
+    border: 1px solid #22c55e;
+    border-radius: 8px;
+    padding: 14px 22px;
+    margin: 18px 0;
+    font-family: monospace;
+    font-size: 17px;
+    color: #22c55e;
+  }
+
+  .highlight-box {
+    background: #0d2818;
+    border: 1px solid #22c55e;
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-top: 24px;
+  }
+  .highlight-box h4 { font-size: 16px; font-weight: 700; color: #22c55e; margin-bottom: 12px; }
+  .highlight-box ul { list-style: none; }
+  .highlight-box ul li { padding: 6px 0; font-size: 15px; color: #ccc; }
+  .highlight-box ul li::before { content: "→ "; color: #22c55e; font-weight: 700; }
+
+  .warning-box {
+    background: #1a0d00;
+    border: 1px solid #f97316;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #f97316;
+    line-height: 1.6;
+  }
+
+  .checklist { list-style: none; margin-top: 24px; }
+  .checklist li {
+    padding: 13px 0;
+    border-bottom: 1px solid #1a1a1a;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #ccc;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist .box { width: 22px; height: 22px; min-width: 22px; border: 2px solid #22c55e; border-radius: 4px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 28px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 28px; }
+
+  .info-block { background: #1a1a1a; border-radius: 12px; padding: 24px; }
+  .info-block h4 { font-size: 14px; font-weight: 700; color: #22c55e; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
+  .info-block p, .info-block li { font-size: 14px; color: #999; line-height: 1.7; }
+  .info-block ul { list-style: none; }
+  .info-block ul li::before { content: "• "; color: #22c55e; }
+
+  .need-card {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 22px;
+  }
+  .need-card .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+  .tag-today { background: #22c55e22; color: #22c55e; border: 1px solid #22c55e44; }
+  .tag-week { background: #f9731622; color: #f97316; border: 1px solid #f9731644; }
+  .tag-asap { background: #ef444422; color: #ef4444; border: 1px solid #ef444444; }
+  .need-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .need-card p { font-size: 13px; color: #777; line-height: 1.6; }
+
+  .week-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .week-row:last-child { border-bottom: none; }
+  .week-day {
+    min-width: 80px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #22c55e;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-top: 2px;
+  }
+  .week-content h4 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  .week-content p { font-size: 13px; color: #777; line-height: 1.5; }
+
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid #1a1a1a;
+    font-size: 16px;
+  }
+  .price-row:last-child { border-bottom: none; }
+  .price-row .label { color: #aaa; }
+  .price-row .amount { font-weight: 700; color: #22c55e; }
+  .price-row .paid { font-size: 12px; color: #22c55e; background: #22c55e22; padding: 3px 8px; border-radius: 20px; margin-left: 8px; }
+  .price-row .due { font-size: 12px; color: #f97316; background: #f9731622; padding: 3px 8px; border-radius: 20px; margin-left: 8px; }
+
+  @media (max-width: 768px) {
+    .slide { padding: 36px 20px; }
+    h1 { font-size: 30px; }
+    h2 { font-size: 24px; }
+    .two-col, .three-col { grid-template-columns: 1fr; }
+    .step-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: TITLE -->
+<div class="slide" style="background: linear-gradient(160deg, #0f0f0f 60%, #0d2818);">
+  <div class="slide-number">CesarScales Agency — Client Onboarding</div>
+  <h1>Vaquero X Landscape<br>Onboarding & Meta Setup</h1>
+  <p class="subtitle">Everything we need to get your ads live, your account set up, and your first leads coming in within 7 days.</p>
+  <p style="font-size: 15px; color: #444; margin-top: 40px;">Scroll down ↓</p>
+</div>
+
+<!-- SLIDE 2: WHAT YOU'RE GETTING -->
+<div class="slide">
+  <div class="slide-number">What You're Getting</div>
+  <h2>Your Complete Ad System</h2>
+  <p class="subtitle">You're not just getting ads. You're getting a full lead generation system built and managed for you.</p>
+  <div class="step-grid">
+    <div class="step-card">
+      <div class="num">01</div>
+      <h4>Meta Business Manager</h4>
+      <p>Professional business account on Facebook. Keeps everything clean and separate from personal.</p>
+    </div>
+    <div class="step-card">
+      <div class="num">02</div>
+      <h4>Facebook & Instagram Ads</h4>
+      <p>Campaigns built and managed for you. Targeted to homeowners in your service area.</p>
+    </div>
+    <div class="step-card">
+      <div class="num">03</div>
+      <h4>Custom Ad Creatives</h4>
+      <p>Before/after images, offer-based ads, video when available. Built to convert.</p>
+    </div>
+    <div class="step-card">
+      <div class="num">04</div>
+      <h4>Lead Tracking (Meta Pixel)</h4>
+      <p>Installed on your site. Tracks every visitor, form fill, and lead so we optimize for results.</p>
+    </div>
+    <div class="step-card">
+      <div class="num">05</div>
+      <h4>Monthly Reporting</h4>
+      <p>Cost per lead, CTR, ROAS. You always know what your money is doing.</p>
+    </div>
+    <div class="step-card">
+      <div class="num">06</div>
+      <h4>Ongoing Management</h4>
+      <p>Daily monitoring, weekly optimizations, budget adjustments based on performance.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 4: WHAT WE NEED TODAY -->
+<div class="slide">
+  <div class="slide-number">What We Need From You</div>
+  <h2>Today — Before We Leave</h2>
+  <p class="subtitle">Have these ready. The more we collect now, the faster your ads go live.</p>
+  <ul class="action-list">
+    <li>
+      <div class="icon">1</div>
+      <div class="text">
+        <strong>Signed Service Agreement</strong>
+        <span>Paper copy. Signed today.</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon">2</div>
+      <div class="text">
+        <strong>Personal Facebook Login</strong>
+        <span>You log in yourself — we never need your password. Just need your account to build on top of.</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon">3</div>
+      <div class="text">
+        <strong>Your Phone (for 2FA)</strong>
+        <span>Facebook will text a verification code during Business Manager setup.</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon">4</div>
+      <div class="text">
+        <strong>Business Info</strong>
+        <span>Legal business name, address, phone, website URL.</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon">5</div>
+      <div class="text">
+        <strong>A Debit or Credit Card for Ad Spend</strong>
+        <span>Goes on your Ad Account. You control the budget. Nothing charges without your approval.</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon">6</div>
+      <div class="text">
+        <strong>3–5 Before & After Photos</strong>
+        <span>Text them to us or AirDrop. Real job photos convert better than stock.</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon">7</div>
+      <div class="text">
+        <strong>Your Service Area</strong>
+        <span>Which cities or zip codes in AZ do you want to target? Be specific.</span>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<!-- SLIDE 5: WHAT WE NEED WEEK 1 -->
+<div class="slide">
+  <div class="slide-number">Week 1 Deliverables — From You</div>
+  <h2>What We Need in the First 7 Days</h2>
+  <p class="subtitle">These are the building blocks for your first campaign. The faster we get them, the faster leads start coming in.</p>
+  <div style="margin-top: 28px;">
+    <div class="week-row">
+      <div class="week-day">Day 1–2</div>
+      <div class="week-content">
+        <h4>Business Manager + Ad Account Setup (Done in this meeting)</h4>
+        <p>Full Meta Business Manager, Facebook Page, Ad Account, Pixel, and CesarScales access all confirmed live.</p>
+      </div>
+    </div>
+    <div class="week-row">
+      <div class="week-day">Day 1–3</div>
+      <div class="week-content">
+        <h4>Before & After Photos / Video</h4>
+        <p>Minimum 5 real job photos. If you have video of lawn work or final results, send that too. These become your ads.</p>
+      </div>
+    </div>
+    <div class="week-row">
+      <div class="week-day">Day 1–3</div>
+      <div class="week-content">
+        <h4>Your Intro Offer</h4>
+        <p>What's the hook that gets someone to call? Options: Free quote, first lawn 20% off, free estimate, seasonal discount. Pick one.</p>
+      </div>
+    </div>
+    <div class="week-row">
+      <div class="week-day">Day 1–3</div>
+      <div class="week-content">
+        <h4>Services List + Pricing Range</h4>
+        <p>What do you offer? Lawn maintenance, cleanups, landscaping, irrigation? What's your average job value? This shapes targeting and ad copy.</p>
+      </div>
+    </div>
+    <div class="week-row">
+      <div class="week-day">Day 3–5</div>
+      <div class="week-content">
+        <h4>Website Access (for Pixel install)</h4>
+        <p>WordPress login or access to whoever manages your site. We install the tracking code — takes under 10 minutes.</p>
+      </div>
+    </div>
+    <div class="week-row">
+      <div class="week-day">Day 5–7</div>
+      <div class="week-content">
+        <h4>Creative Approval</h4>
+        <p>We send you 3 ad variations to review before launch. Quick yes/no on copy and image. Takes 10 minutes on your end.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 6: STEP 1 BM SETUP -->
+<div class="slide">
+  <div class="slide-number">Meta Setup — Step 01</div>
+  <h2>Create Meta Business Manager</h2>
+  <p class="subtitle">Your business headquarters on Meta. All your pages, ad accounts, and team live here.</p>
+  <div class="url-box">business.facebook.com</div>
+  <ul class="action-list">
+    <li>
+      <div class="icon">→</div>
+      <div class="text">
+        <strong>Click "Create Account" (top right)</strong>
+        <span>You'll need to be logged into your personal Facebook first.</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon">→</div>
+      <div class="text">
+        <strong>Business Name: "Vaquero X Landscape"</strong>
+        <span>Use your legal DBA or business name exactly as it appears.</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon">→</div>
+      <div class="text">
+        <strong>Your name + business email</strong>
+        <span>Use the email you check daily. Meta will send important notifications here.</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon">→</div>
+      <div class="text">
+        <strong>Verify your email when prompted</strong>
+        <span>Open the email Meta sends and click the verification link.</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon">→</div>
+      <div class="text">
+        <strong>Fill in business details and submit</strong>
+        <span>Address, phone, website. You're done with step 1.</span>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<!-- SLIDE 7: STEP 2 PAGE -->
+<div class="slide">
+  <div class="slide-number">Meta Setup — Step 02</div>
+  <h2>Create Your Facebook Page</h2>
+  <p class="subtitle">Your public business presence on Facebook and Instagram. Required to run ads.</p>
+  <ul class="action-list">
+    <li>
+      <div class="icon">→</div>
+      <div class="text">
+        <strong>Inside Business Manager → Left Menu → Accounts → Pages</strong>
+        <span>Navigate here after completing Business Manager setup.</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon">→</div>
+      <div class="text">
+        <strong>Click "Add" → "Create a New Page"</strong>
+        <span>Only if you don't already have a Facebook business page.</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon">→</div>
+      <div class="text">
+        <strong>Page Name: "Vaquero X Landscape"</strong>
+        <span>Category: Landscaping Company or Home Services.</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon">→</div>
+      <div class="text">
+        <strong>Add profile photo + cover photo</strong>
+        <span>Use your logo or a clean job photo. We'll upgrade later.</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon">→</div>
+      <div class="text">
+        <strong>Click "Create Page" — done</strong>
+        <span>Page is now inside your Business Manager.</span>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<!-- SLIDE 8: STEP 3 AD ACCOUNT -->
+<div class="slide">
+  <div class="slide-number">Meta Setup — Step 03</div>
+  <h2>Create Ad Account + Add Payment</h2>
+  <p class="subtitle">This is where your campaigns live and your daily spend gets tracked.</p>
+  <ul class="action-list">
+    <li>
+      <div class="icon">→</div>
+      <div class="text">
+        <strong>Left Menu → Accounts → Ad Accounts → Add → Create a New Ad Account</strong>
+        <span>Name it: "Vaquero X Landscape - Ads"</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon">→</div>
+      <div class="text">
+        <strong>Currency: USD / Time Zone: Mountain Time (Arizona)</strong>
+        <span>This cannot be changed later. Get it right now.</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon">→</div>
+      <div class="text">
+        <strong>Click "Create Ad Account"</strong>
+        <span>Ad account is now live inside your Business Manager.</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon">→</div>
+      <div class="text">
+        <strong>Add Payment Method</strong>
+        <span>Ad Account Settings → Payment Settings → Add debit or credit card.</span>
+      </div>
+    </li>
+  </ul>
+  <div class="warning-box">
+    ⚠️ Your card is NOT charged until ads go live. Starting budget: $10–$15/day. You can pause or stop anytime from your phone.
+  </div>
+</div>
+
+<!-- SLIDE 9: STEP 4 AGENCY ACCESS -->
+<div class="slide" style="background: linear-gradient(160deg, #0f0f0f 60%, #0d2818);">
+  <div class="slide-number">Meta Setup — Step 04 (Most Important)</div>
+  <h2>Give CesarScales Full Access</h2>
+  <p class="subtitle">This is how we manage everything on your behalf. You stay in control — you can remove access at any time.</p>
+  <ul class="action-list">
+    <li>
+      <div class="icon">→</div>
+      <div class="text">
+        <strong>Left Menu → Settings → Business Settings</strong>
+        <span>Main control panel for your Business Manager.</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon">→</div>
+      <div class="text">
+        <strong>Partners → Add → "Give a partner access to your assets"</strong>
+        <span>Do NOT click "Ask a partner to share their assets" — wrong direction.</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon">→</div>
+      <div class="text">
+        <strong>Enter CesarScales Business Manager ID</strong>
+        <span>We'll show you the exact number during setup.</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon">→</div>
+      <div class="text">
+        <strong>Assign: Facebook Page + Ad Account → Set role: Admin</strong>
+        <span>We need Admin on both to build and manage campaigns.</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon">→</div>
+      <div class="text">
+        <strong>Click "Send Request" — we accept immediately</strong>
+        <span>Done. We're connected.</span>
+      </div>
+    </li>
+  </ul>
+  <div class="highlight-box">
+    <h4>What CesarScales Can Do With This Access</h4>
+    <ul>
+      <li>Build, launch, and optimize your campaigns</li>
+      <li>Monitor performance daily</li>
+      <li>Adjust budgets, targeting, and creatives</li>
+      <li>Pull reports and send you weekly updates</li>
+      <li>Pause or stop ads if something needs attention</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SLIDE 10: STEP 5 PIXEL -->
+<div class="slide">
+  <div class="slide-number">Meta Setup — Step 05</div>
+  <h2>Install Meta Pixel on Your Website</h2>
+  <p class="subtitle">Tracks every visitor. Tells your ads who's interested, who filled out a form, and who became a lead — so we optimize for real results.</p>
+  <ul class="action-list">
+    <li>
+      <div class="icon">→</div>
+      <div class="text">
+        <strong>Left Menu → Events Manager</strong>
+        <span>Inside your Business Manager.</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon">→</div>
+      <div class="text">
+        <strong>Connect Data Sources → Web → Meta Pixel</strong>
+        <span>Name it: "Vaquero X Pixel"</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon">→</div>
+      <div class="text">
+        <strong>Enter your website URL and select install method</strong>
+        <span>WordPress = use Meta Pixel plugin + paste Pixel ID. Custom site = paste code before &lt;/head&gt;.</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon">→</div>
+      <div class="text">
+        <strong>We handle the install — you just need to give us site access</strong>
+        <span>WordPress login or access to your site manager. Takes under 10 minutes.</span>
+      </div>
+    </li>
+    <li>
+      <div class="icon">→</div>
+      <div class="text">
+        <strong>Verify Pixel is live — green dot in Events Manager</strong>
+        <span>Confirm within 10 minutes of install. Green = tracking. You're live.</span>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<!-- SLIDE 11: FULL CHECKLIST -->
+<div class="slide">
+  <div class="slide-number">Onboarding Checklist</div>
+  <h2>Confirm Everything Before We Wrap Up</h2>
+  <div class="two-col">
+    <div>
+      <p style="font-size: 13px; color: #22c55e; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px;">Today — Must Complete</p>
+      <ul class="checklist">
+        <li><div class="box"></div> Agreement signed</li>
+        <li><div class="box"></div> Business Manager created + email verified</li>
+        <li><div class="box"></div> Facebook Page created inside BM</li>
+        <li><div class="box"></div> Ad Account created — USD / Arizona time zone</li>
+        <li><div class="box"></div> Payment method added to Ad Account</li>
+        <li><div class="box"></div> CesarScales added as Partner — Admin on Page + Ad Account</li>
+        <li><div class="box"></div> Meta Pixel created (install this week)</li>
+        <li><div class="box"></div> 3–5 before/after photos shared</li>
+        <li><div class="box"></div> Service area confirmed (cities/zip codes)</li>
+      </ul>
+    </div>
+    <div>
+      <p style="font-size: 13px; color: #f97316; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px;">This Week — Send to CesarScales</p>
+      <ul class="checklist">
+        <li><div class="box"></div> Additional job photos / video</li>
+        <li><div class="box"></div> Services list and pricing range</li>
+        <li><div class="box"></div> Intro offer decision (free quote, discount, etc.)</li>
+        <li><div class="box"></div> Website login for Pixel install</li>
+        <li><div class="box"></div> Best contact number + preferred contact method</li>
+        <li><div class="box"></div> Creative approval (we send — 10 min review)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 12: WEEK 1 TIMELINE -->
+<div class="slide">
+  <div class="slide-number">What Happens After Today</div>
+  <h2>Your First 7 Days</h2>
+  <p class="subtitle">This is what CesarScales delivers from the moment we leave this meeting.</p>
+  <div style="margin-top: 28px;">
+    <div class="week-row">
+      <div class="week-day">Day 1–2</div>
+      <div class="week-content">
+        <h4>Account Audit + Pixel Install</h4>
+        <p>Verify all Business Manager access is clean. Install and test the Pixel on your website. Confirm everything fires correctly.</p>
+      </div>
+    </div>
+    <div class="week-row">
+      <div class="week-day">Day 2–4</div>
+      <div class="week-content">
+        <h4>Build Ad Creatives</h4>
+        <p>3 ad variations using your before/after photos. Write headline, body copy, and CTA. Build for lead generation — goal is form fills from homeowners.</p>
+      </div>
+    </div>
+    <div class="week-row">
+      <div class="week-day">Day 4–5</div>
+      <div class="week-content">
+        <h4>Creative Approval + Campaign Build</h4>
+        <p>Send you the ads for a quick review. You approve, we build the full campaign — audience targeting, budget, placements, objective.</p>
+      </div>
+    </div>
+    <div class="week-row">
+      <div class="week-day">Day 5–7</div>
+      <div class="week-content">
+        <h4>Campaign Goes Live</h4>
+        <p>Ads launch on Facebook and Instagram. We monitor daily for the first week — watching CPL, CTR, and lead quality.</p>
+      </div>
+    </div>
+    <div class="week-row">
+      <div class="week-day">Day 30</div>
+      <div class="week-content">
+        <h4>Month 1 Results Report</h4>
+        <p>Full breakdown: leads generated, cost per lead, top-performing ad, what we're scaling. Clear picture of your ROI.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 13: CLOSE -->
+<div class="slide" style="background: linear-gradient(160deg, #0f0f0f 60%, #0d2818); text-align: center; align-items: center;">
+  <div class="slide-number" style="text-align: center;">Let's Get to Work</div>
+  <h1 style="font-size: 46px;">Your First Lead<br>is 7 Days Away.</h1>
+  <p class="subtitle" style="text-align: center; margin-top: 16px; max-width: 560px;">You've got the setup. You've got the plan. Now we execute. Any questions before we start?</p>
+  <div style="margin-top: 56px; padding: 28px 40px; background: #1a1a1a; border-radius: 16px; border: 1px solid #2a2a2a; text-align: left; max-width: 480px;">
+    <p style="font-size: 13px; color: #22c55e; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;">CesarScales — Your Ad Manager</p>
+    <p style="font-size: 15px; color: #aaa; line-height: 1.7;">Facebook & Instagram ad management for local service businesses.<br>We build it, launch it, and optimize it — you answer the leads.</p>
+  </div>
+</div>
+
+</body>
+</html>
