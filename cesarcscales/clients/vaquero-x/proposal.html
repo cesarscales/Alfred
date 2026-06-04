@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CesarScales x Vaquero X — Growth Proposal</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: #0a0a0a; color: #f0f0f0; }
+
+  .hero {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    border-bottom: 1px solid #222;
+    padding: 80px 60px 60px;
+    text-align: center;
+  }
+  .hero .tag {
+    display: inline-block;
+    background: #16a34a;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    color: #fff;
+  }
+  .hero h1 span { color: #16a34a; }
+  .hero p {
+    font-size: 18px;
+    color: #888;
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .section { padding: 60px; max-width: 900px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #16a34a;
+    margin-bottom: 16px;
+  }
+  .section h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+  .section p {
+    font-size: 16px;
+    color: #aaa;
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .divider { border: none; border-top: 1px solid #1f1f1f; margin: 0 60px; }
+
+  /* Pain points */
+  .pain-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 32px;
+  }
+  .pain-card {
+    background: #111;
+    border: 1px solid #1f1f1f;
+    border-radius: 12px;
+    padding: 28px;
+  }
+  .pain-card .icon { font-size: 28px; margin-bottom: 12px; }
+  .pain-card h3 { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+  .pain-card p { font-size: 14px; color: #888; line-height: 1.6; margin: 0; }
+
+  /* What we do */
+  .steps { margin-top: 32px; }
+  .step {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 32px;
+    align-items: flex-start;
+  }
+  .step-num {
+    min-width: 44px;
+    height: 44px;
+    background: #16a34a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+  }
+  .step-content h3 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .step-content p { font-size: 15px; color: #888; line-height: 1.6; margin: 0; }
+
+  /* Results */
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 32px;
+  }
+  .result-card {
+    background: #111;
+    border: 1px solid #1f1f1f;
+    border-radius: 12px;
+    padding: 32px 24px;
+    text-align: center;
+  }
+  .result-card .number {
+    font-size: 42px;
+    font-weight: 800;
+    color: #16a34a;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .result-card .label { font-size: 14px; color: #888; line-height: 1.5; }
+
+  /* Pricing */
+  .pricing-card {
+    background: #111;
+    border: 2px solid #16a34a;
+    border-radius: 16px;
+    padding: 48px;
+    margin-top: 32px;
+    text-align: center;
+  }
+  .pricing-card .price {
+    font-size: 64px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+  }
+  .pricing-card .price span { font-size: 24px; color: #888; font-weight: 400; }
+  .pricing-card .subtitle { font-size: 16px; color: #888; margin: 12px 0 32px; }
+  .pricing-features { list-style: none; text-align: left; max-width: 400px; margin: 0 auto 32px; }
+  .pricing-features li {
+    padding: 10px 0;
+    border-bottom: 1px solid #1f1f1f;
+    font-size: 15px;
+    color: #ccc;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .pricing-features li:last-child { border: none; }
+  .pricing-features li::before { content: "✓"; color: #16a34a; font-weight: 700; font-size: 16px; }
+  .setup-note {
+    font-size: 13px;
+    color: #555;
+    margin-top: 8px;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+    padding: 80px 60px;
+    text-align: center;
+  }
+  .cta-section h2 { font-size: 36px; font-weight: 800; color: #fff; margin-bottom: 16px; }
+  .cta-section p { font-size: 18px; color: rgba(255,255,255,0.8); margin-bottom: 32px; }
+  .cta-btn {
+    display: inline-block;
+    background: #fff;
+    color: #16a34a;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 16px 40px;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+  }
+  .contact-info {
+    margin-top: 32px;
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+  }
+  .contact-info strong { color: #fff; }
+
+  @media (max-width: 600px) {
+    .hero { padding: 48px 24px 40px; }
+    .hero h1 { font-size: 32px; }
+    .section { padding: 40px 24px; }
+    .divider { margin: 0 24px; }
+    .pain-grid { grid-template-columns: 1fr; }
+    .results-grid { grid-template-columns: 1fr; }
+    .pricing-card { padding: 32px 24px; }
+    .cta-section { padding: 48px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="tag">Proposal for Vaquero X Landscape</div>
+  <h1>More Calls.<br/>More Jobs.<br/><span>More Revenue.</span></h1>
+  <p>A done-for-you Facebook & Instagram ad system built specifically for your landscaping business.</p>
+</div>
+
+<!-- THE PROBLEM -->
+<div class="section">
+  <div class="section-label">The Problem</div>
+  <h2>Great work isn't enough if nobody sees it.</h2>
+  <p>You're putting in the hours, doing quality work, and relying on word of mouth to grow. That works — until it doesn't. Referrals are unpredictable. You can't scale a business on hope.</p>
+  <p>Meanwhile your competitors are running ads, showing up in front of homeowners every single day, and booking jobs that should be yours.</p>
+
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="icon">📉</div>
+      <h3>Inconsistent Lead Flow</h3>
+      <p>Some weeks are packed, others are slow. Without a system you're always guessing what next month looks like.</p>
+    </div>
+    <div class="pain-card">
+      <div class="icon">⏳</div>
+      <h3>Every Day Without Ads Is Leads Lost</h3>
+      <p>Summer is peak season. Homeowners are searching right now. Every week you wait is revenue going to someone else.</p>
+    </div>
+    <div class="pain-card">
+      <div class="icon">🎯</div>
+      <h3>No Targeting</h3>
+      <p>Word of mouth reaches whoever it reaches. Ads let you put your business in front of the exact homeowners you want to work with.</p>
+    </div>
+    <div class="pain-card">
+      <div class="icon">📊</div>
+      <h3>No Data</h3>
+      <p>Without tracking you don't know what's working, what's not, or how to grow. We fix that from day one.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- WHAT WE DO -->
+<div class="section">
+  <div class="section-label">What We Do</div>
+  <h2>A complete lead generation system — we handle everything.</h2>
+  <p>You focus on the work. We focus on filling your calendar.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Strategy & Setup</h3>
+        <p>We build your full campaign from the ground up — audience targeting, ad copy, creative direction, and pixel tracking. Everything configured and tested before a single dollar is spent.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Creatives That Convert</h3>
+        <p>Before/after photos, video content, professional copy written in a voice that speaks to homeowners. Real, local, trustworthy — not corporate.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Campaign Management</h3>
+        <p>We monitor performance daily. Kill what's not working, scale what is. Your budget works harder every week as we gather data.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>Reporting & Transparency</h3>
+        <p>You'll always know exactly what your ads are doing — cost per lead, click-through rate, and return on ad spend. No guessing, no surprises.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- RESULTS -->
+<div class="section">
+  <div class="section-label">What to Expect</div>
+  <h2>Real numbers for local service businesses.</h2>
+  <p>Results vary but here's what a well-run Facebook/Instagram lead gen campaign looks like for landscaping businesses in your market.</p>
+
+  <div class="results-grid">
+    <div class="result-card">
+      <div class="number">10–20</div>
+      <div class="label">Inbound leads in the first 30 days</div>
+    </div>
+    <div class="result-card">
+      <div class="number">3–5x</div>
+      <div class="label">Return on ad spend as campaigns mature</div>
+    </div>
+    <div class="result-card">
+      <div class="number">$10–25</div>
+      <div class="label">Average cost per lead for home services</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- PRICING -->
+<div class="section">
+  <div class="section-label">Investment</div>
+  <h2>Simple, straightforward pricing.</h2>
+  <p>No hidden fees. No long-term contracts to start. Just results.</p>
+
+  <div class="pricing-card">
+    <div class="price">$1,150<span>/month</span></div>
+    <div class="subtitle">Full-service Facebook & Instagram ad management</div>
+    <ul class="pricing-features">
+      <li>Complete campaign strategy & setup</li>
+      <li>Ad creative production (copy + visuals)</li>
+      <li>Daily campaign monitoring & optimization</li>
+      <li>Audience targeting & retargeting</li>
+      <li>Meta Pixel installation & tracking</li>
+      <li>Monthly performance reporting</li>
+      <li>Direct access to your account manager</li>
+    </ul>
+    <p class="setup-note">One-time setup fee: $750 &nbsp;|&nbsp; Launch fee: $250</p>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>Let's get your phones ringing.</h2>
+  <p>Summer is peak season. The best time to start was last month. The second best time is today.</p>
+  <a href="sms:+16028005800" class="cta-btn">Text to Get Started</a>
+  <div class="contact-info">
+    Or reach out directly — <strong>Cesar @ CesarScales</strong>
+  </div>
+</div>
+
+</body>
+</html>
