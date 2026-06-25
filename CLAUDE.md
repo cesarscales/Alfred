@@ -1,5 +1,5 @@
 # ALFRED — SHARED BRAIN
-Last synced: 2026-05-18
+Last synced: 2026-06-16
 
 ## CRITICAL RULE — NEVER CROSS THESE BRANDS
 | Company | Purpose | Status |
@@ -27,6 +27,10 @@ These are two separate businesses. Never mix messaging, creatives, budgets, or s
 
 ### Current Clients
 - **Vaquero X Landscape** — ACTIVE. Booked May 11, 2026. $750 setup + $250 at launch + $1,150/month. See: `cesarcscales/clients/vaquero-x/`
+  - Ads went LIVE ~Jun 14, 2026 (previews were staged on Desktop Alfred)
+  - Bundle creative brief written: $6,499 backyard remodel (15x15 paver pad, 15x20 turf, 4 tons rock)
+  - Creatives live in `cesarscales/head-quarters` repo (not yet accessible to Remote Alfred)
+  - Outstanding: Tomicheal invoice $100 — invoice created in Stripe, needs to be sent
 
 ---
 
@@ -37,7 +41,7 @@ These are two separate businesses. Never mix messaging, creatives, budgets, or s
 - Truck: 2020 Chevy Silverado 2500 HD — WRAPPED with logo + QR code (completed ~May 14, 2026)
 - Drone: Being acquired May 18, 2026 — for high-quality before/after video creatives
 
-**Ad Launch Target: MAY 22, 2026 (FRIDAY)**
+**Ad Launch: LIVE as of Tuesday Jun 17, 2026**
 - Platform: Facebook + Instagram
 - Objective: Lead generation
 - Budget: $10–$15/day to start
@@ -59,7 +63,7 @@ These are two separate businesses. Never mix messaging, creatives, budgets, or s
 | Instance | Where | Strengths | Limitation |
 |---|---|---|---|
 | **Desktop Alfred** | Windows PC, Claude Code | Full file access, 100x more context, agent routing (Zenith, Vortex, Nexus, Stratos, Aurelius) | Only accessible at desktop |
-| **MacBook Alfred** | MacBook, Claude Code | Full file access, pulls from this repo | New — being set up |
+| **MacBook Alfred** | MacBook / Remote Web | Repo + Adobe + Gmail/Drive/GitHub | Missing: head-quarters repo access, Stripe, VoiceHQ — see sync/SETUP-REMOTE-ALFRED.md |
 | **Mobile Alfred** | claude.ai Projects, phone | Always available, strategy + copy | No file access, manual context paste |
 
 **Sync system:** This repo is the shared brain. Desktop and MacBook push/pull here. Mobile gets context pasted from `_alfred-brain/mobile-sync.md`.
