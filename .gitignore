@@ -1,0 +1,38 @@
+# ==============================================================
+#  ALFRED — SECRETS & LOCAL FILES (NEVER COMMIT)
+#  Live API keys must move machine-to-machine by hand (USB / paste).
+#  Do NOT email them, cloud them, or commit them to GitHub.
+# ==============================================================
+
+# --- Explicit secret files called out in setup ---
+tools/.env
+private/elevenlabs.env
+private/STRIPE-BACKUP.md
+
+# --- Whole private dir (belt-and-suspenders) ---
+private/
+private/**
+
+# --- Environment / key files anywhere in the repo ---
+.env
+.env.*
+*.env
+*.pem
+*.key
+*.p12
+*.pfx
+*credential*
+*secret*
+*stripe*
+*elevenlabs*
+
+# --- OS / editor cruft ---
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# --- Node (in case tools/ grows a project) ---
+node_modules/
+npm-debug.log*
